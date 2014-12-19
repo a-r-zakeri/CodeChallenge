@@ -1,0 +1,20 @@
+import static org.junit.Assert.*;
+
+import java.util.Random;
+
+import org.junit.Test;
+
+
+public class CacheTest {
+
+	@Test
+	public void test() {
+		int minCacheSize = 10;
+		int maxCacheSize = 100000;
+		
+		Random random = new Random(System.currentTimeMillis());
+		
+		int cacheSize = 
+	}
+
+}

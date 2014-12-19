@@ -1,0 +1,14 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class CacheTest {
+
+	@Test
+	public void test() {
+		int minCacheSize = 10;
+		int maxCacheSize = 100000;
+	}
+
+}

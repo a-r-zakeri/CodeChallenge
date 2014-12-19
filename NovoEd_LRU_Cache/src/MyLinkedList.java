@@ -1,3 +1,4 @@
+
 public class MyLinkedList<T> {
 	private LinkedListElement<T> firstElement = null, lastElement = null;
 	private int size = 0;
@@ -22,7 +23,7 @@ public class MyLinkedList<T> {
 
 	public LinkedListElement<T> addFirst(LinkedListElement<T> element) {
 		size++;
-
+		
 		element.setNext(firstElement);
 
 		if (firstElement != null)
@@ -45,6 +46,8 @@ public class MyLinkedList<T> {
 			lastElement = element.getPrev();
 		if (element == firstElement)
 			firstElement = element.getNext();
+		
+		size--;
 	}
 	
 	public void clear(){
@@ -52,6 +55,16 @@ public class MyLinkedList<T> {
 		lastElement = null;
 		size = 0;
 	}
+	
+	/*public void print(){
+		System.out.print("Start queue: " + "first: " + firstElement.getValue() + "  last: " + lastElement.getValue() + "    **");
+		LinkedListElement<T> a = firstElement;
+		while(a != null){
+			System.out.print(a.getValue() + ", ");
+			a = a.getNext();
+		}
+		System.out.println();
+	}*/
 
 }
 

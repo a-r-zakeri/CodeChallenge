@@ -28,12 +28,18 @@ public class LRU_Cache<KeyType, ValueType> implements Cache<KeyType, ValueType> 
 
 	@Override
 	public void set(KeyType key, ValueType value) {
+		if (map.containsKey(key))
+			removeKey(key);
+			
 		if (queue.size() == cacheSize) {
 			removeLeastRecentlyUsed();
 		}
-
+	
+		LinkedListElement<KeyType> queueElement = queue.addFirst(key);
+	
 		CacheInfo<ValueType> cacheInfo = new CacheInfo<ValueType>(value,
-				queue.addFirst(key));
+				queueElement);
+	
 		map.put(key, cacheInfo);
 	}
 
@@ -49,8 +55,14 @@ public class LRU_Cache<KeyType, ValueType> implements Cache<KeyType, ValueType> 
 	}
 
 	private void removeLeastRecentlyUsed() {
-		map.remove(queue.getLast());
+		map.remove(queue.getLast().getValue());
 		queue.remove(queue.getLast());
+	}
+	
+	private void removeKey(KeyType key){
+		if (map.containsKey(key) == false)	return;
+		queue.remove(map.get(key).getQueueElement());
+		map.remove(key);
 	}
 
 }
